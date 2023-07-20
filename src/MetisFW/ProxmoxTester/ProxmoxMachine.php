@@ -90,7 +90,7 @@ class ProxmoxMachine {
   }
 
   protected function executeCommand($command) {
-    $fullCommand = "sudo pct exec {$this->machineId} -- bash -c " . escapeshellarg($command) . " 2>&1";
+    $fullCommand = "sudo pct exec {$this->machineId} -- env -i bash -c " . escapeshellarg($command) . " 2>&1";
     $this->out(">>[{$this->machine}]>> $command ($fullCommand)");
     $output = array();
     $status = null;
